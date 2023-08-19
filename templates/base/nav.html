@@ -1,0 +1,28 @@
+<!-- Top navbar -->
+<nav class="navbar navbar-dark " style="background-color: rgb(148, 135, 210);"  >
+  <div class="container-fluid d-flex justify-content-around">
+      <a class="navbar-brand" href="/">StyleHub</a>
+      <a class="nav-link" href="{% url 'products_display' %}"><button class="btn me-2"  type="button"><i class="fa-solid fa-house"></i></button></a>
+      <a class="nav-link" href="{% url 'cart' %}"><button class="btn me-2"><i class="fa-solid fa-cart-shopping"></i> </button></a>
+      <form class="d-flex" action="{% url 'search' %}" method="get">
+        <input class="form-control me-2 m-2 nav-link" name="search" type="search" placeholder="Search for product" aria-label="Search" style="width:25rem;">
+        <button class="btn  me-2 m-2 " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+        {% if user.is_authenticated %}
+        <a class="nav-link"href=""><button class="btn me-2" type="button"> Hi, {{ request.user.full_name}}</button></a>
+        <a class="nav-link"  href="{% url 'user_logout' %}"><button class="btn me-2" type="button">Logout</button></a>
+        {% else %}
+        <a  class="nav-link" href="{% url 'user_login' %}"><button class="btn  me-2"  type="button" " >login</button></a>
+        <a  class="nav-link" href="{% url 'user_signup' %}"><button class="btn me-2"  type="button" >signup  </button></a>
+        
+       
+        {% endif %}
+        
+        
+    </div>
+    
+        
+    
+  </div>
+</nav>
+

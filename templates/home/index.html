@@ -1,0 +1,84 @@
+{% extends "base/base.html" %}
+
+{% block title %}home{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/home.css">
+ {% endblock css%}
+{% block body %}
+
+{% include "base/nav.html" %}
+<div class="container mt-2">
+  <div class="sort">
+  
+  <form action="{% url 'sort_item' %}" method="get">
+    <ul>
+    <li><button class="custom-button "  type="submit" name="sortby" value="heigh to low"> heigh to low price</button></li>
+    <li><button class="custom-button"  type="submit" name="sortby" value="low to heigh"> low to price heigh </button></li>
+    <li><button class="custom-button" id ="right" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Filters
+    </button></li>
+    <!-- <li><button class="custom-button" type="submit" name="sortby" value="price"> heigh to low price</button></li> -->
+    </ul>
+  </form>
+</div>
+</div>
+<div class="container"> 
+  <div class="row ">
+        {% for item in items %}
+          <div class="card border-0 me-3 pb-2 shadow p-3 my-3 bg-body rounded " style="width: 16.8rem; ">
+            <a href="{% url 'product_info' item.slug %}"> <img src="{{item.image.url }}" class="card-img-top" alt="..." style="height: 300px;"></a>
+            <li class="list-group-item border-0 "><h6>{{item.product_name|slice:":20"}}...</h6></li>
+            <li class="list-group-item border-0  d-flex py-0 "><h4>₹ {{item.price}}</h4></li>
+            <li class="list-group-item border-0 d-flex py-0 ">Free Delivery</li>
+
+        </div>
+          {% endfor %}
+        </div>
+      </div>
+  </div>
+
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">categories</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form action="{% url 'sort_item' %}" method="get">
+        <div class="form-check ">
+          <input class="form-check-input" name="SortByCategory" type="radio" required id="inlineCheckbox1"
+            value='sari'>
+          <label class="form-check-label" for="inlineCheckbox1">Sari</label>
+        </div>
+        <div class="form-check ">
+          <input class="form-check-input" name="SortByCategory" type="radio" required id="inlineCheckbox1"
+            value='bottum wear'>
+          <label class="form-check-label" for="inlineCheckbox1">Bottum wear</label>
+        </div>
+        <div class="form-check ">
+          <input class="form-check-input" name="SortByCategory" type="radio" required id="inlineCheckbox1"
+            value='kurti'>
+          <label class="form-check-label" for="inlineCheckbox1">Kurti</label>
+        </div>
+        <div class="form-check ">
+          <input class="form-check-input" name="SortByCategory" type="radio" required id="inlineCheckbox1"
+            value='top'>
+          <label class="form-check-label" for="inlineCheckbox1">Top</label>
+        </div>
+     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+         </form>
+    </div>
+  </div>
+</div>
+
+{% endblock body%}

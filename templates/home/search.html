@@ -1,0 +1,24 @@
+{% extends "base/base.html" %}
+
+{% block title %}search{% endblock title %}
+
+{% block body %}
+
+{% include "base/nav.html" %}
+
+<div class="container   "> 
+  <div class="row ">
+        {% for item in SearchProduct %}
+          <div class="card border-rounded my-3 me-3 pb-2 " style="width: 16.8rem; ">
+            <a href="{% url 'product_info' item.slug %}"> <img src="{{item.image.url }}" class="card-img-top" alt="..." style="height: 300px;"></a>
+            <li class="list-group-item border-0 "><h6>{{item.product_name|slice:":20"}}...</h6></li>
+            <li class="list-group-item border-0  d-flex py-0 "><h4>₹ {{item.price}}</h4></li>
+            <li class="list-group-item border-0 d-flex py-0 ">Free Delivery</li>
+
+        </div>
+          {% endfor %}
+        </div>
+      </div>
+  </div>
+
+{% endblock body%}

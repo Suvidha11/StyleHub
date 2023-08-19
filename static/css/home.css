@@ -1,0 +1,27 @@
+
+.sort ul {
+    display: flex ;
+}
+
+#right {
+    margin-left: 35rem;
+} 
+
+form ul li{
+    list-style: none;
+    font-size: 18px;
+    width:200px;
+}
+ .btn{
+    font-weight: 400;
+    font-size: 20px;
+ }
+
+
+.custom-button{
+    border: none;
+    background: none;
+    margin:none ;
+    padding: 0;
+    
+}
